@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+ Copyright 2009 Mike Kelly <pioto@pioto.org>
+ Distributed under the terms of the GNU General Public License v2
+
+ Based upon 'res/layout/main.xml' from 'Toast.zip',
+ Copyright 2009 two fourty four a.m. LLC.
+ -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Hello World, LocaleSMSActivity"
-    />
+    android:layout_height="fill_parent" >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/locale_border"
+        android:layout_margin="5px" >
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="@string/address_hint" />
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="@string/message_hint" />
+    </LinearLayout>
 </LinearLayout>
 
