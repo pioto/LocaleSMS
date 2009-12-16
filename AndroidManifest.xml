@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2009 Mike Kelly <pioto@pioto.org>
+ Distributed under the terms of the GNU General Public License v2
+ -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.pioto.locale.sms"
     android:versionCode="1"
     android:versionName="1.0" >
     <application
-        android:label="@string/app_name"
-        android:icon="@drawable/icon" >
+        android:label="@string/app_name" >
         <activity
-            android:name="LocaleSMSActivity"
-            android:label="@string/app_name" >
+            android:name=".EditYourSettingActivity"
+            android:label="@string/setting_name"
+            android:icon="@drawable/icon_plugin_color_32"
+            android:exported="true" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING" />
             </intent-filter>
         </activity>
+        <receiver android:name=".FireReceiver" >
+            <intent-filter>
+                <action android:name="com.twofortyfouram.locale.intent.action.FIRE_SETTING" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
+
