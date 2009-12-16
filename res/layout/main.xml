@@ -24,12 +24,18 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:phoneNumber="true"
+            android:inputType="phone"
             android:hint="@string/address_hint" />
         <EditText
             android:id="@+id/message"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
+            android:autoText="true"
+            android:capitalize="sentences"
+            android:inputType="textShortMessage|textAutoCorrect|textCapSentences|textMultiLine"
+            android:maxLines="4"
+            android:maxLength="1000"
             android:hint="@string/message_hint" />
     </LinearLayout>
 </LinearLayout>
