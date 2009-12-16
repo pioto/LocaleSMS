@@ -8,16 +8,23 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.SmsManager;
+import android.text.TextUtils;
 
 public final class FireReceiver extends BroadcastReceiver
 {
     @Override
     public void onReceive(final Context context, final Intent intent)
     {
-        String dest = "9082953882";
-        String msg = "test";
+        if (com.twofortyfouram.Intent.ACTION_FIRE_SETTING.equals(intent.getAction()))
+        {
+            final String addr = intent.getStringExtra(Constants.INTENT_EXTRA_ADDRESS);
+            final String msg = intent.getStringExtra(Constants.INTENT_EXTRA_MESSAGE);
 
-        SmsManager.getDefault().sendTextMessage(dest, null, msg, null, null);
+            if (TextUtils.isEmpty(addr) || TextUtils.isEmpty(msg))
+                return;
+
+            SmsManager.getDefault().sendTextMessage(addr, null, msg, null, null);
+        }
     }
 }
 
