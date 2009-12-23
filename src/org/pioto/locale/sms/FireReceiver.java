@@ -5,8 +5,10 @@
 package org.pioto.locale.sms;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.telephony.SmsManager;
 import android.text.TextUtils;
 
@@ -23,7 +25,14 @@ public final class FireReceiver extends BroadcastReceiver
             if (TextUtils.isEmpty(addr) || TextUtils.isEmpty(msg))
                 return;
 
+            // send the message
             SmsManager.getDefault().sendTextMessage(addr, null, msg, null, null);
+
+            // let the message show in the Messaging app
+            ContentValues vals = new ContentValues();
+            vals.put("address", addr);
+            vals.put("body", msg);
+            context.getContentResolver().insert(Uri.parse("content://sms/sent"), vals);
         }
     }
 }
