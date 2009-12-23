@@ -4,7 +4,8 @@
  Distributed under the terms of the GNU General Public License v2
  -->
 <resources>
-    <string name="app_name">SMS</string>
+    <string name="app_name">Locale SMS Plugin</string>
+    <string name="setting_name">SMS</string>
     <string name="message_hint">Message</string>
     <string name="address_hint">Address</string>
     <string name="help">Help</string>
