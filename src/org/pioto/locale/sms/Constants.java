@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Mike Kelly <pioto@pioto.org>
+ * Copyright 2009, 2012 Mike Kelly <pioto@pioto.org>
  * Distributed under the terms of the GNU General Public License v2
  */
 package org.pioto.locale.sms;
