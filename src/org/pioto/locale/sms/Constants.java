@@ -4,6 +4,8 @@
  */
 package org.pioto.locale.sms;
 
+import android.net.Uri;
+
 /**
  * Class of {@code Intent} constants used by this <i>Locale</i> plug-in.
  */
@@ -30,5 +32,10 @@ final class Constants
      * store-and-forward {@code Intent}.
      */
     protected static final String INTENT_EXTRA_MESSAGE = "org.pioto.locale.sms.extra.MESSAGE";
+    
+    /**
+     * The URL of our help page.
+     */
+    protected static final Uri HELP_URL = Uri.parse("http://www.pioto.org/android/LocaleSMS.html");
 }
 

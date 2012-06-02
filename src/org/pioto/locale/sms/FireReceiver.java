@@ -17,7 +17,7 @@ public final class FireReceiver extends BroadcastReceiver
     @Override
     public void onReceive(final Context context, final Intent intent)
     {
-        if (com.twofortyfouram.Intent.ACTION_FIRE_SETTING.equals(intent.getAction()))
+        if (com.twofortyfouram.locale.Intent.ACTION_FIRE_SETTING.equals(intent.getAction()))
         {
             final String addr = intent.getStringExtra(Constants.INTENT_EXTRA_ADDRESS);
             final String msg = intent.getStringExtra(Constants.INTENT_EXTRA_MESSAGE);

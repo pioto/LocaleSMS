@@ -7,6 +7,8 @@
  */
 package org.pioto.locale.sms;
 
+import com.twofortyfouram.locale.BreadCrumber;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,12 +36,7 @@ public final class EditYourSettingActivity extends Activity
         // so hansel and grettle don't get lost
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.locale_ellipsizing_title);
 
-        String breadcrumbString = getIntent().getStringExtra(com.twofortyfouram.Intent.EXTRA_STRING_BREADCRUMB);
-
-        if (TextUtils.isEmpty(breadcrumbString))
-            breadcrumbString = getString(R.string.app_name);
-        else
-            breadcrumbString = String.format("%s%s%s", breadcrumbString, com.twofortyfouram.Intent.BREADCRUMB_SEPARATOR, getString(R.string.app_name));
+        CharSequence breadcrumbString = BreadCrumber.generateBreadcrumb(getBaseContext(), getIntent(), getString(R.string.app_name));
 
         ((TextView) findViewById(R.id.locale_ellipsizing_title_text)).setText(breadcrumbString);
         setTitle(breadcrumbString);
@@ -71,7 +68,7 @@ public final class EditYourSettingActivity extends Activity
             Log.d(TAG, "address = \""+address+"\"; message = \""+message+"\"");
 
             if (0 == address.length() || 0 == message.length())
-                setResult(com.twofortyfouram.Intent.RESULT_REMOVE);
+                setResult(RESULT_CANCELED);
             else
             {
                 final Intent returnIntent = new Intent();
@@ -79,7 +76,7 @@ public final class EditYourSettingActivity extends Activity
                 returnIntent.putExtra(Constants.INTENT_EXTRA_ADDRESS, address);
                 returnIntent.putExtra(Constants.INTENT_EXTRA_MESSAGE, message);
 
-                returnIntent.putExtra(com.twofortyfouram.Intent.EXTRA_STRING_BLURB, address);
+                returnIntent.putExtra(com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB, address);
 
                 setResult(RESULT_OK, returnIntent);
             }
@@ -113,10 +110,8 @@ public final class EditYourSettingActivity extends Activity
                 Log.v(TAG, "save");
                 return true;
             case R.id.menu_help:
-                final Intent helpIntent = new Intent(com.twofortyfouram.Intent.ACTION_HELP);
-
-                helpIntent.putExtra(com.twofortyfouram.Intent.EXTRA_STRING_HELP_URL, "http://www.pioto.org/android/LocaleSMS.html");
-                helpIntent.putExtra(com.twofortyfouram.Intent.EXTRA_STRING_BREADCRUMB, getTitle().toString());
+                final Intent helpIntent = new Intent(android.content.Intent.ACTION_VIEW);
+                helpIntent.setData(Constants.HELP_URL);
 
                 Log.v(TAG, "help");
 
