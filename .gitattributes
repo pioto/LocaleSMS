@@ -1,0 +1,2 @@
+*.java whitespace=-blank-at-eof
+*.xml whitespace=-blank-at-eof
